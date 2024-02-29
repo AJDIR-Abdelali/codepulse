@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="mt-3">
+    BlogPost List
+  </h1>
+  <div class="d-flex justify-content-end mt-3">
+    <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
+  </div>
+
+  <ng-container *ngIf="blogPosts$ | async as blogPosts">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Short Description</th>
+          <th>Content</th>
+          <th>Featured Image URL</th>
+          <th>URL Handle</th>
+          <th>Published Date</th>
+          <th>Author</th>
+          <th>Is Visible</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let blogPost of blogPosts">
+          <td>{{ blogPost.title }}</td>
+          <td>{{ blogPost.shortDescription | slice:0:50}}</td>
+          <td>{{ blogPost.content | slice:0:50}}</td>
+          <td>{{ blogPost.featuredImageUrl | slice:0:50}}</td>
+          <td>{{ blogPost.urlHandle }}</td>
+          <td>{{ blogPost.publishedDate | date }}</td>
+          <td>{{ blogPost.author }}</td>
+          <td>{{ blogPost.isVisible ? 'Yes' : 'No' }}</td>
+          <td>
+            <!-- <button class="btn btn-primary" (click)="editblogPost(blogPost)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteblogPost(blogPost)">Delete</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>
