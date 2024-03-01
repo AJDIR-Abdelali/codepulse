@@ -1,0 +1,11 @@
+export interface UpdateBlogPost {
+  title: string ,
+  shortDescription: string ,
+  content: string ,
+  featuredImageUrl: string ,
+  urlHandle: string ,
+  author: string ,
+  isVisible: boolean ,
+  publishedDate: Date,
+  categories:string[]
+}

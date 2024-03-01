@@ -30,7 +30,7 @@
 
       <div class="form-group">
         <label for="featuredImageUrl">Featured Image URL:</label>
-        <ng-container *ngIf="model.featuredImageUrl !== ''">
+        <ng-container *ngIf=" model.featuredImageUrl !== '' ">
           <div>
             <img [src]="model.featuredImageUrl" height="100" class="my-2">
           </div>
@@ -70,6 +70,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      <button type="submit" class="btn btn-danger mt-3"(click)="OnDelete()">Delete</button>
     </form>
   </ng-container>
 </div>
