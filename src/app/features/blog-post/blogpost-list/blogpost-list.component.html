@@ -7,17 +7,14 @@
   </div>
 
   <ng-container *ngIf="blogPosts$ | async as blogPosts">
-    <table class="table">
+    <table class="table mt-3">
       <thead>
         <tr>
           <th>Title</th>
           <th>Short Description</th>
-          <th>Content</th>
-          <th>Featured Image URL</th>
-          <th>URL Handle</th>
-          <th>Published Date</th>
           <th>Author</th>
           <th>Is Visible</th>
+          <th>Categories</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -25,15 +22,15 @@
         <tr *ngFor="let blogPost of blogPosts">
           <td>{{ blogPost.title }}</td>
           <td>{{ blogPost.shortDescription | slice:0:50}}</td>
-          <td>{{ blogPost.content | slice:0:50}}</td>
-          <td>{{ blogPost.featuredImageUrl | slice:0:50}}</td>
-          <td>{{ blogPost.urlHandle }}</td>
-          <td>{{ blogPost.publishedDate | date }}</td>
           <td>{{ blogPost.author }}</td>
           <td>{{ blogPost.isVisible ? 'Yes' : 'No' }}</td>
           <td>
-            <!-- <button class="btn btn-primary" (click)="editblogPost(blogPost)">Edit</button>
-            <button class="btn btn-danger" (click)="deleteblogPost(blogPost)">Delete</button> -->
+            <span *ngFor="let categories of blogPost.categories">
+              <span class="badge bg-secondary me-2">{{ categories.name }}</span>
+            </span>
+          </td>
+          <td>
+            <a class="btn btn-light" [routerLink]="['/admin/blogposts',blogPost.id]">Edit</a>
           </td>
         </tr>
       </tbody>

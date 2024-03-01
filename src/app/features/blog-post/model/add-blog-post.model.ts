@@ -6,5 +6,6 @@ export interface AddBlogPost {
   urlHandle: string ,
   author: string ,
   isVisible: boolean ,
-  publishedDate: Date
+  publishedDate: Date,
+  categories:string[]
 }
